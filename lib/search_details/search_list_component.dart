@@ -122,7 +122,7 @@ class _SearchListComponentState extends State<SearchListComponent> {
       },
     ):
     Container(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         child:Text("No Image Found",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20,color: Colors.black),)
     );
   }
