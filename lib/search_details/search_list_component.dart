@@ -17,6 +17,7 @@ class _SearchListComponentState extends State<SearchListComponent> {
   final TextEditingController searchController = new TextEditingController();
   late SearchImageBloc searchImageBloc;
   String apiKeyValue = "27331115-2db04e9d2d940491a665c95d6";
+  final _singleChildScrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +84,27 @@ class _SearchListComponentState extends State<SearchListComponent> {
   }
 
   Widget gridImageDetails({required SearchModel imageList}) {
+
+    /*
+        List<Hits> imageHitList =[];
+    ///Scroll listener
+    _singleChildScrollController.addListener(() {
+      if (_singleChildScrollController.offset >=
+          _singleChildScrollController.position.maxScrollExtent &&
+          !_singleChildScrollController.position.outOfRange) {
+        print("ABDX3");
+        setState(() {
+          imageHitList.addAll(imageList.hits!.getRange(
+              imageHitList.length,
+              imageHitList.length + 200 > imageList.hits!.length
+                  ? imageList.hits!.length
+                  : imageHitList.length + 200));
+        });
+      }
+    });
+     */
     return imageList.hits!.length>0?GridView.builder(
+      controller: _singleChildScrollController,
       itemCount: imageList.hits?.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, childAspectRatio: 0.69),
